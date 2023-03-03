@@ -1,0 +1,6 @@
+study("EMA Indicator")
+length = input(20, minval=1, title="Length of EMA")
+price = close
+ema = ema(price, length)
+
+plot(ema, linewidth=2, title="EMA")
