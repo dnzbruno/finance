@@ -1,0 +1,11 @@
+study("Buy when price crosses above EMA and sell when price crosses below EMA")
+length = input(20, minval=1, title="Length of EMA")
+price = close
+ema = ema(price, length)
+
+trend = sma(price, length) > sma(price[1], length) ? 1 : 0
+
+if (price >= ema and trend == 1)
+    strategy.entry("Buy", strategy.long)
+else if (price <= ema and trend == 0)
+    strategy.close("Sell", "Buy")
